@@ -95,8 +95,10 @@ def image_difference(path1, path2):
             # print('rect_size', rect_size[1])
             if 10 < rect_size[1] <= 50:
                 vehicle = 'pedestrian'
-            elif rect_size[1] > 50:
+            elif 50 < rect_size[1] <= 150:
                 vehicle = 'car'
+            elif 150 < rect_size[1] <= 180:
+                vehicle = 'van'
             else:
                 vehicle = 'uncertain'
             vehicle_list.append(vehicle)
@@ -237,6 +239,10 @@ def tot_num_groups(group_list):
 
     return sum_val_list
 
+def count_matching(condition, seq):
+    """Returns the amount of items in seq that return true from condition"""
+    return sum(1 for item in seq if condition(item))
+
 
 # ----------------------------------------------------
 # Image averaging
@@ -261,13 +267,18 @@ def averaging(path, a, filename, pic_num, imlist):
     for i in range(len(imlist_analysis)):
         count += 1
         #im = imlist_analysis[i]
-        imarr = array(Image.open(imlist_analysis[i]), dtype=np.float)
-        arr = arr + imarr/n# Mean average across analysis
+        try:
+            imarr = array(Image.open(imlist_analysis[i]), dtype=np.float)
+        except OSError:
+            n = n-1
+            continue
+        arr = arr + imarr/n  # Mean average across analysis
+
 
     arr = array(np.round(arr), dtype= np.uint8)
     # Generate, save and preview final image
     out = Image.fromarray(arr, mode="RGB")
-    #out = Image.open(imlist_analysis[0])
+    # out = Image.open(imlist_analysis[0])
     out.save('%s' % path + '\\%s_Average.jpg' % filename)
     out_name = '%s' % path + '\\%s_Average.jpg' % filename
     return out_name
@@ -286,31 +297,31 @@ noise_thres_list = data_df['Noise Threshold']
 datetime_list_date = data_df['Datetime Date']
 datetime_list_time = data_df['Datetime Time']
 
-# ----------------------
-# Grouping function
-window_unit = 'H' # Days, hours, minutes ect
-window_size = 1 # Number of each per group
-group_list = time_windowing(data_df, window_unit, window_size)
-#data_df["Grouping"] = group_list
-
-# ----------------------------------------
-# Plot time vs number of vehicles passing
-
-sum_val_list = tot_num_groups(group_list)
-arr1 = array(range(len(sum_val_list)))
-arr2 = asarray(sum_val_list)
-
-arr_group = vstack((arr1, arr2))
-arr_group = transpose(arr_group)
-
-#print(arr)
-
-# Plotting
-plt.plot(arr1, arr2)
-plt.gcf().autofmt_xdate()
-plt.xlabel('')
-plt.ylabel('')
-#plt.show()
+# # ----------------------
+# # Grouping function
+# window_unit = 'H' # Days, hours, minutes ect
+# window_size = 1 # Number of each per group
+# group_list = time_windowing(data_df, window_unit, window_size)
+# #data_df["Grouping"] = group_list
+#
+# # ----------------------------------------
+# # Plot time vs number of vehicles passing
+#
+# sum_val_list = tot_num_groups(group_list)
+# arr1 = array(range(len(sum_val_list)))
+# arr2 = asarray(sum_val_list)
+#
+# arr_group = vstack((arr1, arr2))
+# arr_group = transpose(arr_group)
+#
+# #print(arr)
+#
+# # Plotting
+# plt.plot(arr1, arr2)
+# plt.gcf().autofmt_xdate()
+# plt.xlabel('')
+# plt.ylabel('')
+# #plt.show()
 
 # ---------------------------
 # Testing 2
@@ -378,4 +389,3 @@ data_df.to_csv(r'C:\Users\Alfie\PycharmProjects\Siot\Data_export.csv')
 data_df2 = data_df.dropna(axis=0, how='any')
 data_df2.to_csv(r'C:\Users\Alfie\PycharmProjects\Siot\Data_export2.csv')
 print('Complete!')
-plt.show()

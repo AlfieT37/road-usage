@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="735b1a82-5415-492a-af4f-a262a0c385a0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Data_export.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data_export.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_export2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data_export2.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_processing.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iot_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/iot_functions.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -10,27 +15,37 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/iot_functions.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="-975">
+                    <caret line="276" selection-start-line="276" selection-end-line="276" />
+                    <folding>
+                      <element signature="e#0#19#0" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="200" column="13" selection-start-line="200" selection-start-column="13" selection-end-line="200" selection-end-column="13" />
+            <state relative-caret-position="-6064">
+              <caret line="67" column="84" selection-start-line="67" selection-start-column="84" selection-end-line="67" selection-end-column="84" />
               <folding>
                 <element signature="e#24#35#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data_processing.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3060">
-              <caret line="186" column="10" selection-start-line="186" selection-start-column="10" selection-end-line="186" selection-end-column="10" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -50,7 +65,6 @@
       <find>smtp</find>
       <find>df</find>
       <find>time_window</find>
-      <find>sum</find>
       <find>vehicle_list</find>
       <find>numpy</find>
       <find>drop</find>
@@ -65,6 +79,12 @@
       <find>plott</find>
       <find>testing wee</find>
       <find>Weather</find>
+      <find>timewindowing</find>
+      <find>sum</find>
+      <find>grouping</find>
+      <find>car</find>
+      <find>colo</find>
+      <find>&quot;</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -86,19 +106,19 @@
         <option value="$PROJECT_DIR$/reference_4.py" />
         <option value="$PROJECT_DIR$/reference_5.py" />
         <option value="$PROJECT_DIR$/reference_6.py" />
-        <option value="$PROJECT_DIR$/data_processing.py" />
         <option value="$PROJECT_DIR$/image_diff.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/rename images.py" />
-        <option value="$PROJECT_DIR$/iot_functions.py" />
         <option value="$PROJECT_DIR$/.gitignore.py" />
         <option value="$PROJECT_DIR$/Procfile.py" />
         <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/data_processing.py" />
+        <option value="$PROJECT_DIR$/iot_functions.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-11" />
+    <option name="x" value="1909" />
     <option name="width" value="1943" />
     <option name="height" value="2102" />
   </component>
@@ -124,7 +144,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/rename images.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/data_processing.py" />
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RunDashboard">
@@ -139,7 +159,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.app">
+  <component name="RunManager" selected="Python.iot_functions">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Siot" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -153,6 +173,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="data_processing" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Siot" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Alfie\AppData\Local\Programs\Python\Python37-32\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_processing.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -291,6 +332,7 @@
       <item itemvalue="Python.app" />
       <item itemvalue="Python.iot_functions" />
       <item itemvalue="Python.test" />
+      <item itemvalue="Python.data_processing" />
       <item itemvalue="Python.rename images" />
       <item itemvalue="Python.reference_3" />
       <item itemvalue="Python.setup" />
@@ -320,7 +362,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="0" width="1110" height="1201" extended-state="0" />
+    <frame x="1091" y="0" width="1110" height="1201" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18715084" />
@@ -329,7 +371,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49953488" weight="0.32959852" />
       <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.645488" visible="true" weight="0.34766355" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49209303" weight="0.36434108" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49209303" weight="0.3635514" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49953488" weight="0.32959852" />
@@ -344,6 +386,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/iot_functions.py</url>
+          <line>270</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -385,7 +434,6 @@
     <entry file="file://$PROJECT_DIR$/reference_6.py" />
     <entry file="file://$PROJECT_DIR$/reference_5.py" />
     <entry file="file://$PROJECT_DIR$/reference_2.py" />
-    <entry file="file://$PROJECT_DIR$/image_diff.py" />
     <entry file="file://$PROJECT_DIR$/rename images.py" />
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/site-packages/skimage/util/dtype.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -401,33 +449,43 @@
     <entry file="file://$PROJECT_DIR$/reference_3.py" />
     <entry file="file://$PROJECT_DIR$/reference_1.py" />
     <entry file="file://$PROJECT_DIR$/reference_4.py" />
-    <entry file="file://$PROJECT_DIR$/iot_functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-475">
-          <caret line="295" lean-forward="true" selection-start-line="295" selection-end-line="295" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore.py" />
     <entry file="file://$PROJECT_DIR$/Procfile.py" />
     <entry file="file://$PROJECT_DIR$/get-pip.py" />
-    <entry file="file://$PROJECT_DIR$/app.py">
+    <entry file="file://$PROJECT_DIR$/image_diff.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="200" column="13" selection-start-line="200" selection-start-column="13" selection-end-line="200" selection-end-column="13" />
+        <state relative-caret-position="167">
+          <caret line="116" selection-start-line="116" selection-end-line="116" />
           <folding>
-            <element signature="e#24#35#0" expanded="true" />
+            <element signature="e#127#167#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data_processing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3060">
-          <caret line="186" column="10" selection-start-line="186" selection-start-column="10" selection-end-line="186" selection-end-column="10" />
+        <state relative-caret-position="1054">
+          <caret line="112" column="19" lean-forward="true" selection-start-line="112" selection-start-column="19" selection-end-line="112" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6064">
+          <caret line="67" column="84" selection-start-line="67" selection-start-column="84" selection-end-line="67" selection-end-column="84" />
+          <folding>
+            <element signature="e#24#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iot_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-975">
+          <caret line="276" selection-start-line="276" selection-end-line="276" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>

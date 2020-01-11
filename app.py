@@ -59,6 +59,8 @@ colors = {
     'background': '#FFFFFF',
     'text': '#7FDBFF'}
 
+#'#7FDBFF'
+
 # ----------------------------------------------------------------------
 # -- Assets --
 # ----------------------------------------------------------------------
@@ -146,26 +148,28 @@ Intro to pie Charts
 app.layout = html.Div(style={'backgroundColor': colors['background']}, children=[
 
     # Titles
-    html.H1(
-        children='Road Usage',
-        style={
-            'textAlign': 'center',
-            'color': colors['text']
-        }
-    ),
-
-    # Subtitles
     html.Div([
-        html.Div(children='Sensing and Internet of Things Coursework', style={
-            'textAlign': 'center',
-            'color': colors['text']
-        }),
+        html.H1(
+            children='Road Usage',
+            style={
+                'textAlign': 'center',
+                'color': 'white'
+            }
+        ),
+
+        # Subtitles
+        html.Div([
+            html.Div(children='Sensing and Internet of Things Coursework', style={
+                'textAlign': 'center',
+                'color': 'white'
+            }),
+
 
         html.Div(children='by Alfie Thompson', style={
             'textAlign': 'center',
-            'color': colors['text']
-        }),
-    ]),
+            'color': 'white'}),
+        ]),
+    ], style={'backgroundColor': '#053B41'}),
 
     # Introduction
     html.Div([
