@@ -20,37 +20,23 @@ server = app.server
 # -- Data importing --
 df = pd.read_csv('https://gist.githubusercontent.com/chriddyp/c78bf172206ce24f77d6363a2d754b59/raw/c353e8ef842413cae56ae3920b8fd78468aa4cb2/usa-agricultural-exports-2011.csv')
 data_df = pd.read_csv('Data_export2.csv')
+week_df = pd.read_csv('data_week.csv')
+time_df = pd.read_csv('data_time.csv')
 
+# -- Data naming
+# Weekly data
+Day = week_df['Day']
+Total = week_df['Total']
+Cars = week_df['Car']
+Vans = week_df['Van']
+Pedestrians = week_df['Pedestrian']
 
-# -- Data Processing --
-# def grouping_vehicles(data_df):
-#     vehicle_type = data_df['Vehicle Type']
-#     detection_errors = 0
-#     cars = 0
-#     pedestrians = 0
-#     uncertains = 0
-#     for j in tqdm(range(len(vehicle_type))):
-#         vehicle_type_sub = vehicle_type[636]
-#         vehicle_type_sub = vehicle_type_sub.split('\\')
-#         for i in range(len(vehicle_type)):
-#             vehicle = vehicle_type_sub[i]
-#             if vehicle == 'car':
-#                 cars += 1
-#             elif vehicle == 'detection error':
-#                 detection_errors += 1
-#             elif vehicle == 'pedestrian':
-#                 pedestrians += 1
-#             else:
-#                 uncertains += 1
-#     total_vehicles = [pedestrians, cars, uncertains, detection_errors]
-#     return total_vehicles
-
-# time_list = time_windowing(data_df, 'H', 1)
-# data_df['Time Grouping'] = time_list
-# date_list = time_windowing(data_df, 'D', 1)
-# data_df['Date Grouping'] = date_list
-#
-# print(data_df)
+# Hourly Data
+Time = time_df['Time']
+Total_hourly = time_df['Total']
+Cars_hourly = time_df['Car']
+Vans_hourly = time_df['Van']
+Pedestrians_hourly = time_df['Pedestrian']
 
 # -- Generation of tables --
 def generate_table(dataframe, max_rows=10):
@@ -140,11 +126,13 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
 
     # -- Bar Chart plot --
     dcc.Graph(
-        id='example-graph-2',
+        id='Testing week plot',
         figure={
             'data': [
-                {'x': [1, 2, 3], 'y': [4, 1, 2], 'type': 'bar', 'name': 'SF'},
-                {'x': [1, 2, 3], 'y': [2, 4, 5], 'type': 'bar', 'name': u'Montréal'},
+                {'x': Day, 'y': Cars, 'type': 'bar', 'name': 'Cars'},
+                {'x': Day, 'y': Pedestrians, 'type': 'bar', 'name': u'Pedestrians'},
+                {'x': Day, 'y': Vans, 'type': 'bar', 'name': u'Vans'},
+
             ],
             'layout': {
                 'plot_bgcolor': colors['background'],
@@ -156,35 +144,48 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
         }
     ),
 
-
-
-    # Plot road usage per unit time
+    # Plot road usage per unit time ---------------------------
+    # {'x': Day, 'y': Cars, 'type': 'bar', 'name': 'Cars'},
+    # {'x': Day, 'y': Total, 'type': 'bar', 'name': u'Pedestrians'},
+    # {'x': Day, 'y': Vans, 'type': 'bar', 'name': u'Vans'},
     dcc.Graph(
         figure=dict(
             data=[
                 dict(
-                    x=[1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
-                       2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012],
-                    y=[219, 146, 112, 127, 124, 180, 236, 207, 236, 263,
-                       350, 430, 474, 526, 488, 537, 500, 439],
-                    name='Rest of world',
+                    x=Day,
+                    y=Total,
+                    name='Total',
                     marker=dict(
                         color='rgb(55, 83, 109)'
                     )
                 ),
                 dict(
-                    x=[1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
-                       2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012],
-                    y=[16, 13, 10, 11, 28, 37, 43, 55, 56, 88, 105, 156, 270,
-                       299, 340, 403, 549, 499],
-                    name='China',
+                    x=Day,
+                    y=Cars,
+                    name='Cars',
+                    marker=dict(
+                        color='rgb(26, 118, 255)'
+                    )
+                ),
+                dict(
+                    x=Day,
+                    y=Pedestrians,
+                    name='Pedestrians',
+                    marker=dict(
+                        color='rgb(26, 118, 255)'
+                    )
+                ),
+                dict(
+                    x=Day,
+                    y=Vans,
+                    name='Vans',
                     marker=dict(
                         color='rgb(26, 118, 255)'
                     )
                 )
             ],
             layout=dict(
-                title='US Export of Plastic Scrap',
+                title='Activity During day - Measured Per Hour',
                 showlegend=True,
                 legend=dict(
                     x=0,
@@ -194,8 +195,62 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
             )
         ),
         style={'height': 300},
-        id='my-graph'
+        id='my-graph1'
     ),
+    dcc.Graph(
+        figure=dict(
+            data=[
+                dict(
+                    x=Time,
+                    y=Total_hourly,
+                    name='Total',
+                    marker=dict(
+                        color='rgb(55, 83, 109)'
+                    )
+                ),
+                dict(
+                    x=Time,
+                    y=Cars_hourly,
+                    name='Cars',
+                    marker=dict(
+                        color='rgb(26, 118, 255)'
+                    )
+                ),
+                dict(
+                    x=Time,
+                    y=Pedestrians_hourly,
+                    name='Pedestrians',
+                    marker=dict(
+                        color='rgb(26, 118, 255)'
+                    )
+                ),
+                dict(
+                    x=Time,
+                    y=Vans_hourly,
+                    name='Vans',
+                    marker=dict(
+                        color='rgb(26, 118, 255)'
+                    )
+                )
+            ],
+            layout=dict(
+                title='Activity During day - Measured Per Hour',
+                showlegend=True,
+                legend=dict(
+                    x=0,
+                    y=1.0
+                ),
+                margin=dict(l=40, r=0, t=40, b=30)
+            )
+        ),
+        style={'height': 300},
+        id='my-graph2'
+    ),
+
+
+
+
+
 
     dcc.Graph(
         id='graph',
@@ -206,12 +261,15 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
         }
     ),
 
+
     # # Table plot
-    # html.H4(children='US Agriculture Exports (2011)', style={
+    # html.H4(children='Vehicle Usage Per day', style={
     #     'textAlign': 'center',
     #     'color': colors['text']
     # }),
-    # generate_table(df)
+    # generate_table(date_df),
+    #
+    # generate_table(time_df)
 
 
 ])
