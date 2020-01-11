@@ -15,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="318" column="14" lean-forward="true" selection-start-line="318" selection-start-column="14" selection-end-line="318" selection-end-column="14" />
+            <state relative-caret-position="289">
+              <caret line="200" column="13" selection-start-line="200" selection-start-column="13" selection-end-line="200" selection-end-column="13" />
               <folding>
                 <element signature="e#24#35#0" expanded="true" />
               </folding>
@@ -64,6 +64,7 @@
       <find>layout</find>
       <find>plott</find>
       <find>testing wee</find>
+      <find>Weather</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -415,8 +416,8 @@
     <entry file="file://$PROJECT_DIR$/get-pip.py" />
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="318" column="14" lean-forward="true" selection-start-line="318" selection-start-column="14" selection-end-line="318" selection-end-column="14" />
+        <state relative-caret-position="289">
+          <caret line="200" column="13" selection-start-line="200" selection-start-column="13" selection-end-line="200" selection-end-column="13" />
           <folding>
             <element signature="e#24#35#0" expanded="true" />
           </folding>
