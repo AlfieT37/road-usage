@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="735b1a82-5415-492a-af4f-a262a0c385a0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Data_export.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data_export.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_export2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data_export2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_processing.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iot_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/iot_functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_time.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data_time.csv" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,14 +16,26 @@
     <window id="1">
       <content type="file-editors">
         <state>
-          <leaf>
-            <file pinned="false" current-in-tab="true">
+          <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+            <file pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/iot_functions.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="-975">
+                  <state relative-caret-position="4692">
                     <caret line="276" selection-start-line="276" selection-end-line="276" />
                     <folding>
                       <element signature="e#0#19#0" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/app.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="732">
+                    <caret line="128" column="26" lean-forward="true" selection-start-line="128" selection-start-column="26" selection-end-line="128" selection-end-column="26" />
+                    <folding>
+                      <element signature="e#24#35#0" expanded="true" />
                     </folding>
                   </state>
                 </provider>
@@ -38,20 +47,7 @@
     </window>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-6064">
-              <caret line="67" column="84" selection-start-line="67" selection-start-column="84" selection-end-line="67" selection-end-column="84" />
-              <folding>
-                <element signature="e#24#35#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -111,16 +107,16 @@
         <option value="$PROJECT_DIR$/rename images.py" />
         <option value="$PROJECT_DIR$/.gitignore.py" />
         <option value="$PROJECT_DIR$/Procfile.py" />
-        <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/data_processing.py" />
         <option value="$PROJECT_DIR$/iot_functions.py" />
+        <option value="$PROJECT_DIR$/app.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1909" />
-    <option name="width" value="1943" />
-    <option name="height" value="2102" />
+    <option name="x" value="1907" />
+    <option name="width" value="1945" />
+    <option name="height" value="2104" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -159,7 +155,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.iot_functions">
+  <component name="RunManager" selected="Python.app">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Siot" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -362,20 +358,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1091" y="0" width="1110" height="1201" extended-state="0" />
+    <frame x="1090" y="0" width="1111" height="1202" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18715084" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18697675" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49953488" weight="0.32959852" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.645488" visible="true" weight="0.34766355" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.645488" visible="true" weight="0.34733894" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49209303" weight="0.3635514" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49953488" weight="0.32959852" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32959852" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4962756" weight="0.32803738" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.507907" side_tool="true" weight="0.34911793" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.4962756" weight="0.32803738" />
@@ -452,20 +448,12 @@
     <entry file="file://$PROJECT_DIR$/.gitignore.py" />
     <entry file="file://$PROJECT_DIR$/Procfile.py" />
     <entry file="file://$PROJECT_DIR$/get-pip.py" />
-    <entry file="file://$PROJECT_DIR$/image_diff.py">
+    <entry file="file://$PROJECT_DIR$/image_diff.py" />
+    <entry file="file://$PROJECT_DIR$/data_processing.py" />
+    <entry file="file://$PROJECT_DIR$/iot_functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="116" selection-start-line="116" selection-end-line="116" />
-          <folding>
-            <element signature="e#127#167#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_processing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
-          <caret line="112" column="19" lean-forward="true" selection-start-line="112" selection-start-column="19" selection-end-line="112" selection-end-column="19" />
+        <state relative-caret-position="4692">
+          <caret line="276" selection-start-line="276" selection-end-line="276" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
@@ -474,20 +462,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6064">
-          <caret line="67" column="84" selection-start-line="67" selection-start-column="84" selection-end-line="67" selection-end-column="84" />
+        <state relative-caret-position="732">
+          <caret line="128" column="26" lean-forward="true" selection-start-line="128" selection-start-column="26" selection-end-line="128" selection-end-column="26" />
           <folding>
             <element signature="e#24#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iot_functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-975">
-          <caret line="276" selection-start-line="276" selection-end-line="276" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>

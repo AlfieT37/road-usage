@@ -53,6 +53,22 @@ def generate_pie_charts(dataframe):
         x2 = x1 + 0.40
     return data
 
+def stacked_weather_chart(weather_type_list,cloud_weather,clear_weather,rain_weather):
+    trace1 = go.Bar(
+        x=weather_type_list, y=cloud_weather,
+        name='Cloud'
+    )
+    trace2 = go.Bar(
+        x=weather_type_list, y=clear_weather,
+        name='Clear'
+    )
+    trace3 = go.Bar(
+        x=weather_type_list, y=rain_weather,
+        name='Rain'
+    )
+    data = [trace1, trace2, trace3]
+    return data
+
 
 # -- Colours --
 colors = {
@@ -72,8 +88,12 @@ time_df = pd.read_csv('data_time.csv')
 totals_df = pd.read_csv('data_totals.csv')
 
 # Weather data
-weather_type_df = pd.read_csv('data_weather_type.csv')
 temp_df = pd.read_csv('data_temp.csv')
+weather_type_df = pd.read_csv('data_weather_pct.csv')
+
+# Uncertainty data
+Uncertain_df = pd.read_csv('data_uncertain.csv')
+Detection_df = pd.read_csv('data_detection.csv')
 
 # -- Run Functions --
 
@@ -89,18 +109,19 @@ Vans = week_df['Van']
 Pedestrians = week_df['Pedestrian']
 
 # Hourly Data
-Time = time_df['Time']
+Time = time_df['Hour']
 Total_hourly = time_df['Total']
 Cars_hourly = time_df['Car']
-Vans_hourly = time_df['Van']
+Uncertain_hourly = time_df['Uncertain']
 Pedestrians_hourly = time_df['Pedestrian']
 
 # Weather Type
-Weather_type = weather_type_df['Type']
-Total_weather = weather_type_df['Total']
-Cars_weather = weather_type_df['Car']
-Vans_weather = weather_type_df['Van']
-Pedestrians_weather = weather_type_df['Pedestrian']
+Cloud_weather = weather_type_df['Cloud']
+vehicle_type_weather = weather_type_df['Type']
+Clear_weather = weather_type_df['Clear']
+Rain_weather = weather_type_df['Rain']
+Weather_type_list = ['Pedestrian', 'Car', 'Uncertain', 'Overall']
+bar_data = stacked_weather_chart(Weather_type_list, Cloud_weather, Clear_weather, Rain_weather)
 
 # Temperature
 Temperature = temp_df['Temp']
@@ -108,6 +129,12 @@ Total_temp = temp_df['Total']
 Cars_temp = temp_df['Car']
 Vans_temp = temp_df['Van']
 Pedestrians_temp = temp_df['Pedestrian']
+
+# Uncertainty
+Uncertain_time = Uncertain_df['Hour']
+Uncertain_number = Uncertain_df['Number']
+Detection_time = Detection_df['Hour']
+Detection_number = Detection_df['Number']
 
 # -- Text --
 markdown_text = ''' 
@@ -216,24 +243,14 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
             # Bar Chart
             html.Div([
                 dcc.Graph(
-                    id='Weather Type plot',
-                    figure={
-                        'data': [
-                            {'x': Weather_type, 'y': Cars_weather, 'type': 'bar', 'name': 'Cars'},
-                            {'x': Weather_type, 'y': Pedestrians_weather, 'type': 'bar', 'name': u'Pedestrians'},
-                            {'x': Weather_type, 'y': Vans_weather, 'type': 'bar', 'name': u'Vans'},
+                    figure=go.Figure(
+                        data=bar_data,
+                        layout=go.Layout(
+                            barmode='stack',
+                            xaxis=dict(tickvals=['Pedestrian', 'Car', 'Uncertain', 'Overall']))
+                          )
+                )], style={'height': '300', 'width': '48%', 'display': 'inline-block'}),
 
-                        ],
-                        'layout': {
-                            'title': 'Average activity depending on Weather',
-                            'plot_bgcolor': colors['background'],
-                            'paper_bgcolor': colors['background'],
-                            'xaxis': {'title': 'Time - Hours (24 hours)'},
-                            'yaxis': {'title': 'Number of vehicles'}
-                        }
-                    }
-                )
-            ], style={'height': '300', 'width': '48%', 'display': 'inline-block'}),
             html.Div([
                 dcc.Graph(
                     id='Temp plot',
@@ -344,9 +361,10 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
                         id='Testing time plot',
                         figure={
                             'data': [
+                                {'x': Time, 'y': Total_hourly, 'type': 'bar', 'name': 'Cars'},
                                 {'x': Time, 'y': Cars_hourly, 'type': 'bar', 'name': 'Cars'},
                                 {'x': Time, 'y': Pedestrians_hourly, 'type': 'bar', 'name': u'Pedestrians'},
-                                {'x': Time, 'y': Vans_hourly, 'type': 'bar', 'name': u'Vans'},
+                                {'x': Time, 'y': Uncertain_hourly, 'type': 'bar', 'name': u'Uncertain'},
 
                             ],
                             'layout': {
@@ -424,6 +442,14 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
                         data=[
                             dict(
                                 x=Time,
+                                y=Total_hourly,
+                                name='Total',
+                                marker=dict(
+                                    color='rgb(55, 83, 109)'
+                                )
+                            ),
+                            dict(
+                                x=Time,
                                 y=Cars_hourly,
                                 name='Cars',
                                 marker=dict(
@@ -440,8 +466,8 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
                             ),
                             dict(
                                 x=Time,
-                                y=Vans_hourly,
-                                name='Vans',
+                                y=Uncertain_hourly,
+                                name='Uncertain',
                                 marker=dict(
                                     color='rgb(55, 83, 109)'
                                 )
@@ -470,6 +496,54 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
         dcc.Markdown(style={'columnCount': 1}, children=Pie_chart_introductions),
         # Pie Charts
         html.Div([dcc.Graph(figure={'data': totals_data})])
+    ]),
+
+    html.Div([
+        html.H3(
+            children='Uncertainty', style={
+                'textAlign': 'center'}),
+        dcc.Markdown(style={'columnCount': 1}, children=Pie_chart_introductions),
+        #
+        html.Div([
+            html.Div([
+                dcc.Graph(
+                    id='Uncertainty Plot',
+                    figure={
+                        'data': [
+                            {'x': Uncertain_time, 'y': Uncertain_hourly, 'type': 'bar', 'name': 'Average'},
+
+                        ],
+                        'layout': {
+                            'title': 'Average number of "Uncertain" identifications - per hour',
+                            'plot_bgcolor': colors['background'],
+                            'paper_bgcolor': colors['background'],
+                            'xaxis': {'title': 'Time - Hours (24 hours)'},
+                            'yaxis': {'title': 'Number of "Uncertain" identifications'}
+
+                        }
+                    }
+                )
+            ], style={'width': '48%', 'display': 'inline-block'}),
+
+            html.Div([
+                dcc.Graph(
+                    id='Detection Error Plot',
+                    figure={
+                        'data': [
+                            {'x': Detection_time, 'y': Detection_number, 'type': 'bar', 'name': 'Average'},
+
+                        ],
+                        'layout': {
+                            'title': 'Average number of Detection errors - per hour',
+                            'plot_bgcolor': colors['background'],
+                            'paper_bgcolor': colors['background'],
+                            'xaxis': {'title': 'Time - Hours (24 hours)'},
+                            'yaxis': {'title': 'Number of Detection Errors'}
+                        }
+                    }
+                )
+            ], style={'width': '48%', 'display': 'inline-block'}),
+        ])
     ]),
 ])
 
