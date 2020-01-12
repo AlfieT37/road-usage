@@ -158,7 +158,7 @@ processed data, source code and Remote Sensor module code. Photos are hosted pri
 * Identify trends in road usage by **time**, **day** and **weather conditions**
 * Present visualisation of data online - via a web app \n
 ##### Information about the study
-This study spans over two weeks of data collection, with 35,000 samples. Future development of the study would
+This study spans over two weeks of data collection, with 16,600 samples. Future development of the study would
 generate data that is useful for road planning and smart cities, who could redirect traffic based upon real data.\n
 *For more information, contact me* - [Via email](mailto:alfiethompson37@gmail.com) *(alfiethompson37@gmail.com)*\n
 ##### Web app
@@ -248,21 +248,26 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
             dcc.Markdown(style={'columnCount': 2}, children=markdown_text)])
     ]),
 
+    html.H2(
+        children='-- Road Usage Data --', style={
+            'textAlign': 'Center'}),
+
     html.Div([
-        html.H2(
+        html.H3(
             children='Data Overview', style={
-                'textAlign': 'center'}),
+                'textAlign': 'left'}),
         html.Div([
             dcc.Markdown(style={'columnCount': 2}, children=data_overview),
             ])
     ]),
+
     # -- Weather Data --
     # Line Chart
     html.Div([
         # Section title and introductions
-        html.H2(
+        html.H3(
             children='Weather Dependent', style={
-                'textAlign': 'center'}),
+                'textAlign': 'left'}),
         dcc.Markdown(style={'columnCount': 1}, children=weather_introduction_markdown),
 
         # Weather Module
@@ -333,9 +338,9 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
 
     # -- Bar Chart plot --
     html.Div([
-        html.H2(
-            children='Total plotting', style={
-                'textAlign': 'center'}),
+        html.H3(
+            children='Time Dependent', style={
+                'textAlign': 'left'}),
         dcc.Markdown(style={'columnCount': 1}, children=totals_introduction_markdown),
         # -- Tabs -- (Controlling view-able data)
         dcc.Tabs(id="tabs-example", value='tab-1-example', children=[
@@ -351,7 +356,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
         html.Div([
             html.H3(
                 children='Pie Charts', style={
-                    'textAlign': 'center'}),
+                    'textAlign': 'left'}),
             dcc.Markdown(style={'columnCount': 1}, children=Pie_chart_introductions),
             ], style={'height': '200'}),
         # Pie Charts
@@ -362,9 +367,9 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
 
     # -- Uncertainty Plots --
     html.Div([
-        html.H3(
+        html.H2(
             children='-- Study Meta Data --', style={
-                'textAlign': 'center'}),
+                'textAlign': 'left'}),
         dcc.Markdown(style={'columnCount': 1}, children=Meta_analysis),
         #
         html.Div([
@@ -419,13 +424,8 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
 def render_content(tab):
     if tab == 'tab-1-example':
         return html.Div([
-            html.H3('Line Charts'),
+            # html.H3('Line Charts'),
             html.Div([
-                # html.H3(
-                #     children='Graph plots', style={
-                #         'textAlign': 'center',
-                #     }
-                # ),
                 html.Div([
                     dcc.Graph(
                         figure=dict(
@@ -526,7 +526,7 @@ def render_content(tab):
         ])
     elif tab == 'tab-2-example':
         return html.Div([
-            html.H3('Bar Chart Plots'),
+            # html.H3('Bar Chart Plots'),
             html.Div([
                 html.Div([
                     html.Div([

@@ -18,8 +18,8 @@
             <file pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/iot_functions.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="4692">
-                    <caret line="276" selection-start-line="276" selection-end-line="276" />
+                  <state relative-caret-position="391">
+                    <caret line="23" column="15" lean-forward="true" selection-start-line="23" selection-end-line="24" />
                     <folding>
                       <element signature="e#0#19#0" expanded="true" />
                     </folding>
@@ -30,8 +30,8 @@
             <file pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/app.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="731">
-                    <caret line="186" column="44" selection-start-line="186" selection-start-column="44" selection-end-line="186" selection-end-column="44" />
+                  <state relative-caret-position="374">
+                    <caret line="241" lean-forward="true" selection-start-line="241" selection-end-line="241" />
                     <folding>
                       <element signature="e#24#35#0" expanded="true" />
                     </folding>
@@ -45,7 +45,20 @@
     </window>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$USER_HOME$/OneDrive - Imperial College London/DE4/Internet of things/image-difference/image-difference/image_diff.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="680">
+              <caret line="112" column="17" selection-start-line="112" selection-start-column="17" selection-end-line="112" selection-end-column="17" />
+              <folding>
+                <element signature="e#2114#2154#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -81,6 +94,9 @@
       <find>&quot;</find>
       <find>generate_pie_charts</find>
       <find>mark</find>
+      <find>cent</find>
+      <find>h2</find>
+      <find>h3</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -109,14 +125,16 @@
         <option value="$PROJECT_DIR$/Procfile.py" />
         <option value="$PROJECT_DIR$/data_processing.py" />
         <option value="$PROJECT_DIR$/iot_functions.py" />
+        <option value="$USER_HOME$/OneDrive - Imperial College London/DE4/Internet of things/image-difference/image-difference/image_diff.py" />
         <option value="$PROJECT_DIR$/app.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="1907" />
+    <option name="y" value="-13" />
     <option name="width" value="1945" />
-    <option name="height" value="2104" />
+    <option name="height" value="2114" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -140,7 +158,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/data_processing.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app.py" />
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RunDashboard">
@@ -190,6 +208,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_processing.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="image_diff" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Siot" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Alfie\AppData\Local\Programs\Python\Python37-32\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$USER_HOME$/OneDrive - Imperial College London/DE4/Internet of things/image-difference/image-difference" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$USER_HOME$/OneDrive - Imperial College London/DE4/Internet of things/image-difference/image-difference/image_diff.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -282,27 +321,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="Siot" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Users\Alfie\AppData\Local\Programs\Python\Python37-32\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="weather_api" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Siot" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -325,9 +343,9 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.app" />
+      <item itemvalue="Python.image_diff" />
       <item itemvalue="Python.iot_functions" />
-      <item itemvalue="Python.test" />
+      <item itemvalue="Python.app" />
       <item itemvalue="Python.data_processing" />
       <item itemvalue="Python.rename images" />
       <item itemvalue="Python.reference_3" />
@@ -358,7 +376,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1090" y="0" width="1111" height="1202" extended-state="0" />
+    <frame x="1090" y="-7" width="1111" height="1208" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18697675" />
@@ -366,7 +384,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49953488" weight="0.32959852" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.645488" visible="true" weight="0.34733894" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.645488" visible="true" weight="0.4930362" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49209303" weight="0.36321196" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -400,16 +418,6 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Weather API.py" />
-    <entry file="file://$USER_HOME$/OneDrive - Imperial College London/DE4/Internet of things/image-difference/image-difference/image_diff.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="18" lean-forward="true" selection-end-line="53" selection-end-column="14" />
-          <folding>
-            <element signature="e#127#167#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/image diff.py" />
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -450,20 +458,37 @@
     <entry file="file://$PROJECT_DIR$/get-pip.py" />
     <entry file="file://$PROJECT_DIR$/image_diff.py" />
     <entry file="file://$PROJECT_DIR$/data_processing.py" />
+    <entry file="file://$PROJECT_DIR$/../image_diff_Backup1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="127" column="35" lean-forward="true" selection-end-line="137" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/iot_functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4692">
-          <caret line="276" selection-start-line="276" selection-end-line="276" />
+        <state relative-caret-position="391">
+          <caret line="23" column="15" lean-forward="true" selection-start-line="23" selection-end-line="24" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/OneDrive - Imperial College London/DE4/Internet of things/image-difference/image-difference/image_diff.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="112" column="17" selection-start-line="112" selection-start-column="17" selection-end-line="112" selection-end-column="17" />
+          <folding>
+            <element signature="e#2114#2154#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="186" column="44" selection-start-line="186" selection-start-column="44" selection-end-line="186" selection-end-column="44" />
+        <state relative-caret-position="374">
+          <caret line="241" lean-forward="true" selection-start-line="241" selection-end-line="241" />
           <folding>
             <element signature="e#24#35#0" expanded="true" />
           </folding>
