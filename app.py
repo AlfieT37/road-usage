@@ -43,15 +43,23 @@ def generate_pie_charts(dataframe):
     data = []
     x1 = 0
     x2 = 0.40
+
+    a=0
     for label, value in zip(labels, values):
+        if a == 0:
+            my_title = 'Proportion of total vehicles'
+        else:
+            my_title = 'Percentage of identified vehicles'
         data.append(go.Pie(labels=label,
                            values=value,
                            hoverinfo='label+value+percent', textinfo='value',
-                           domain={'x': [x1, x2], 'y': [0, 1]}
+                           domain={'x': [x1, x2], 'y': [0, 1]},
+                           title=my_title
                            )
                     )
         x1 = x1 + 0.45
         x2 = x1 + 0.40
+        a += 1
     return data
 
 
@@ -77,7 +85,7 @@ colors = {
     'background': '#FFFFFF',
     'text': '#7FDBFF'}
 
-#'#7FDBFF'
+# '#7FDBFF'
 
 # ----------------------------------------------------------------------
 # -- Assets --
@@ -85,6 +93,7 @@ colors = {
 # -- Data for plots --
 df = pd.read_csv('https://gist.githubusercontent.com/chriddyp/c78bf172206ce24f77d6363a2d754b59/raw/c353e8ef842413cae56ae3920b8fd78468aa4cb2/usa-agricultural-exports-2011.csv')
 #data_df = pd.read_csv('Data_export2.csv')
+
 week_df = pd.read_csv('data_week.csv')
 time_df = pd.read_csv('data_time.csv')
 totals_df = pd.read_csv('data_totals.csv')
@@ -99,7 +108,7 @@ Detection_df = pd.read_csv('data_detection.csv')
 
 # -- Run Functions --
 
-totals_data = generate_pie_charts(totals_df)
+totals_data = generate_pie_charts(totals_df)  # Make Pie charts based off data
 
 
 # -- Data naming --
@@ -211,16 +220,6 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
             style={'width': '48%', 'display': 'inline-block'}),
     ]),
 
-
-    # # -- Tabs -- (Controlling view-able data)
-    # dcc.Tabs(
-    #     id='tabs', value='1', children=[
-    #         dcc.Tab(label='Experimental Data', value=1),
-    #         dcc.Tab(label='Equipment Effectiveness', value=2)
-    #     ]
-    # ),
-    # html.Div(id='tab-output'),
-    #
     html.Div([
         html.H2(
             children='Data Overview', style={
@@ -319,16 +318,21 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
 
         ]),
 
+    # -- Pie Chart Plots --
     html.Div([
-        html.H3(
-            children='Pie Charts', style={
-                'textAlign': 'center'}),
-        dcc.Markdown(style={'columnCount': 1}, children=Pie_chart_introductions),
+        html.Div([
+            html.H3(
+                children='Pie Charts', style={
+                    'textAlign': 'center'}),
+            dcc.Markdown(style={'columnCount': 1}, children=Pie_chart_introductions),
+            ], style={'height': '200'}),
         # Pie Charts
-        html.Div([dcc.Graph(figure={'data': totals_data})])
+        html.Div([
+            html.Div([dcc.Graph(figure={'data': totals_data})])
+        ], style={'height': '200'}),
     ]),
 
-
+    # -- Uncertainty Plots --
     html.Div([
         html.H3(
             children='Uncertainty', style={
@@ -377,6 +381,12 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
         ])
     ]),
 ])
+
+
+
+
+# ---------------------------------------------------------
+# -- Callbacks --
 
 @app.callback(Output('tabs-content-example', 'children'),
               [Input('tabs-example', 'value')])
