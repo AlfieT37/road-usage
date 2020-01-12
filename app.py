@@ -3,9 +3,11 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 import pandas as pd
+from dash.dependencies import Input, Output
 from PIL import Image
 import plotly.graph_objects as go
 from tqdm import tqdm
+
 
 #from iot_functions import time_windowing
 
@@ -14,7 +16,6 @@ from tqdm import tqdm
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-
 server = app.server
 
 
@@ -52,6 +53,7 @@ def generate_pie_charts(dataframe):
         x1 = x1 + 0.45
         x2 = x1 + 0.40
     return data
+
 
 def stacked_weather_chart(weather_type_list,cloud_weather,clear_weather,rain_weather):
     trace1 = go.Bar(
@@ -124,10 +126,10 @@ Weather_type_list = ['Pedestrian', 'Car', 'Uncertain', 'Overall']
 bar_data = stacked_weather_chart(Weather_type_list, Cloud_weather, Clear_weather, Rain_weather)
 
 # Temperature
-Temperature = temp_df['Temp']
+Temperature = temp_df['Temperature']
 Total_temp = temp_df['Total']
 Cars_temp = temp_df['Car']
-Vans_temp = temp_df['Van']
+Uncertain_temp = temp_df['Uncertain']
 Pedestrians_temp = temp_df['Pedestrian']
 
 # Uncertainty
@@ -225,8 +227,6 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
                 'textAlign': 'center'}),
         html.Div([
             dcc.Markdown(style={'columnCount': 2}, children=data_overview),
-            # dcc.Markdown(style={'height': '300', 'width': '48%', 'display': 'inline-block'}, children=data_overview),
-            # dcc.Markdown(style={'height': '300', 'width': '48%', 'display': 'inline-block'}, children=data_overview2),
             ])
     ]),
     # -- Weather Data --
@@ -234,7 +234,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
     html.Div([
         # Section title and introductions
         html.H2(
-            children='Weather Dependant', style={
+            children='Weather Dependent', style={
                 'textAlign': 'center'}),
         dcc.Markdown(style={'columnCount': 1}, children=weather_introduction_markdown),
 
@@ -246,247 +246,77 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
                     figure=go.Figure(
                         data=bar_data,
                         layout=go.Layout(
+                            title='Transport methods depending on weather',
                             barmode='stack',
-                            xaxis=dict(tickvals=['Pedestrian', 'Car', 'Uncertain', 'Overall']))
+                            xaxis=dict(tickvals=['Pedestrian', 'Car', 'Uncertain', 'Overall'], title='Vehicle type'),
+                            yaxis=dict(title='Percentage of total detected vehicles'),
+                            )
                           )
                 )], style={'height': '300', 'width': '48%', 'display': 'inline-block'}),
-
-            html.Div([
                 dcc.Graph(
-                    id='Temp plot',
-                    figure={
-                        'data': [
-                            {'x': Temperature, 'y': Cars_temp, 'type': 'bar', 'name': 'Cars'},
-                            {'x': Temperature, 'y': Pedestrians_temp, 'type': 'bar', 'name': u'Pedestrians'},
-                            {'x': Temperature, 'y': Vans_temp, 'type': 'bar', 'name': u'Vans'},
-
+                    figure=dict(
+                        data=[
+                            dict(
+                                x=Temperature,
+                                y=Total_temp,
+                                name='Cars',
+                                marker=dict(
+                                    color='rgb(55, 83, 109)'
+                                )
+                            ),
+                            dict(
+                                x=Temperature,
+                                y=Cars_temp,
+                                name='Cars',
+                                marker=dict(
+                                    color='rgb(55, 83, 109)'
+                                )
+                            ),
+                            dict(
+                                x=Temperature,
+                                y=Pedestrians_temp,
+                                name='Pedestrians',
+                                marker=dict(
+                                    color='rgb(55, 83, 109)'
+                                )
+                            ),
+                            dict(
+                                x=Temperature,
+                                y=Uncertain_temp,
+                                name='Uncertainty',
+                                marker=dict(
+                                    color='rgb(55, 83, 109)'
+                                )
+                            )
                         ],
-                        'layout': {
-                            'title': 'Average activity depending on Temperature',
-                            'plot_bgcolor': colors['background'],
-                            'paper_bgcolor': colors['background'],
-                            'xaxis': {'title': 'Time - Hours (24 hours)'},
-                            'yaxis': {'title': 'Number of vehicles'}
-                        }
-                    }
-                )
-            ], style={'height': '300', 'width': '48%', 'display': 'inline-block'}),
-        ]),
-
-        # Line Graph
-        html.Div([
-            dcc.Graph(
-                figure=dict(
-                    data=[
-                        dict(
-                            x=Temperature,
-                            y=Cars_temp,
-                            name='Cars',
-                            marker=dict(
-                                color='rgb(55, 83, 109)'
-                            )
-                        ),
-                        dict(
-                            x=Temperature,
-                            y=Pedestrians_temp,
-                            name='Pedestrians',
-                            marker=dict(
-                                color='rgb(55, 83, 109)'
-                            )
-                        ),
-                        dict(
-                            x=Temperature,
-                            y=Vans_temp,
-                            name='Vans',
-                            marker=dict(
-                                color='rgb(55, 83, 109)'
-                            )
+                        layout=dict(
+                            title='Average activity depending on Temperature',
+                            showlegend=True,
+                            legend=dict(
+                                x=0,
+                                y=1.0
+                            ),
+                            margin=dict(l=40, r=0, t=40, b=30)
                         )
-                    ],
-                    layout=dict(
-                        title='Average activity depending on Temperature',
-                        showlegend=True,
-                        legend=dict(
-                            x=0,
-                            y=1.0
-                        ),
-                        margin=dict(l=40, r=0, t=40, b=30)
-                    )
-                ),
-                style={'height': 300},
-                id='temperature plot '
+                    ),
+                    style={'height': '300', 'width': '48%', 'display': 'inline-block'},
+                    id='temperature plot '
             )])
-        ]),
-
+    ]),
 
     # -- Bar Chart plot --
     html.Div([
-
         html.H2(
             children='Total plotting', style={
                 'textAlign': 'center'}),
         dcc.Markdown(style={'columnCount': 1}, children=totals_introduction_markdown),
-
-        html.Div([
-            # html.H3(
-            #     children='Bar plots', style={
-            #         'textAlign': 'center',
-            #     }
-            # ),
-            html.Div([
-                html.Div([
-                    dcc.Graph(
-                        id='Testing week plot',
-                        figure={
-                            'data': [
-                                {'x': Day, 'y': Cars, 'type': 'bar', 'name': 'Cars'},
-                                {'x': Day, 'y': Pedestrians, 'type': 'bar', 'name': u'Pedestrians'},
-                                {'x': Day, 'y': Vans, 'type': 'bar', 'name': u'Vans'},
-
-                            ],
-                            'layout': {
-                                'title': 'Average activity during Week - Measured per Day',
-                                'plot_bgcolor': colors['background'],
-                                'paper_bgcolor': colors['background'],
-                                'xaxis': {'title': 'Day - 24 hour periods'},
-                                'yaxis': {'title': 'Number of vehicles'}
-
-                            }
-                        }
-                    )
-                ], style={'width': '48%', 'display': 'inline-block'}),
-
-                html.Div([
-                    dcc.Graph(
-                        id='Testing time plot',
-                        figure={
-                            'data': [
-                                {'x': Time, 'y': Total_hourly, 'type': 'bar', 'name': 'Cars'},
-                                {'x': Time, 'y': Cars_hourly, 'type': 'bar', 'name': 'Cars'},
-                                {'x': Time, 'y': Pedestrians_hourly, 'type': 'bar', 'name': u'Pedestrians'},
-                                {'x': Time, 'y': Uncertain_hourly, 'type': 'bar', 'name': u'Uncertain'},
-
-                            ],
-                            'layout': {
-                                'title': 'Average activity during Day - Measured per Hour',
-                                'plot_bgcolor': colors['background'],
-                                'paper_bgcolor': colors['background'],
-                                'xaxis': {'title': 'Time - Hours (24 hours)'},
-                                'yaxis': {'title': 'Number of vehicles'}
-                            }
-                        }
-                    )
-                ], style={'width': '48%', 'display': 'inline-block'}),
-            ])
+        # -- Tabs -- (Controlling view-able data)
+        dcc.Tabs(id="tabs-example", value='tab-1-example', children=[
+            dcc.Tab(label='Tab One', value='tab-1-example'),
+            dcc.Tab(label='Tab Two', value='tab-2-example'),
         ]),
+        html.Div(id='tabs-content-example'),
 
-        # Plot road usage per unit time ---------------------------
-        # {'x': Day, 'y': Cars, 'type': 'bar', 'name': 'Cars'},
-        # {'x': Day, 'y': Total, 'type': 'bar', 'name': u'Pedestrians'},
-        # {'x': Day, 'y': Vans, 'type': 'bar', 'name': u'Vans'},
-        html.Div([
-            # html.H3(
-            #     children='Graph plots', style={
-            #         'textAlign': 'center',
-            #     }
-            # ),
-            html.Div([
-                dcc.Graph(
-                    figure=dict(
-                        data=[
-                            dict(
-                                x=Day,
-                                y=Cars,
-                                name='Cars',
-                                marker=dict(
-                                    color='rgb(55, 83, 109)'
-                                )
-                            ),
-                            dict(
-                                x=Day,
-                                y=Pedestrians,
-                                name='Pedestrians',
-                                marker=dict(
-                                    color='rgb(55, 83, 109)'
-                                )
-                            ),
-                            dict(
-                                x=Day,
-                                y=Vans,
-                                name='Vans',
-                                marker=dict(
-                                    color='rgb(55, 83, 109)'
-                                )
-                            )
-                        ],
-                        layout=dict(
-                            title='Average activity during Week - Measured per Day',
-                            xaxis_title='x axis',
-                            yaxis_title='Y axis',
-                            showlegend=True,
-                            legend=dict(
-                                x=0,
-                                y=1.0
-                            ),
-                            margin=dict(l=40, r=0, t=40, b=30)
-                        )
-                    ),
-                    style={'height': 300},
-                    id='my-graph1'
-                )], style={'width': '48%', 'display': 'inline-block'}),
-
-            # Time Plot
-            html.Div([
-                dcc.Graph(
-                    figure=dict(
-                        data=[
-                            dict(
-                                x=Time,
-                                y=Total_hourly,
-                                name='Total',
-                                marker=dict(
-                                    color='rgb(55, 83, 109)'
-                                )
-                            ),
-                            dict(
-                                x=Time,
-                                y=Cars_hourly,
-                                name='Cars',
-                                marker=dict(
-                                    color='rgb(55, 83, 109)'
-                                )
-                            ),
-                            dict(
-                                x=Time,
-                                y=Pedestrians_hourly,
-                                name='Pedestrians',
-                                marker=dict(
-                                    color='rgb(55, 83, 109)'
-                                )
-                            ),
-                            dict(
-                                x=Time,
-                                y=Uncertain_hourly,
-                                name='Uncertain',
-                                marker=dict(
-                                    color='rgb(55, 83, 109)'
-                                )
-                            )
-                        ],
-                        layout=dict(
-                            title='Average activity during day - Measured Per Hour',
-                            showlegend=True,
-                            legend=dict(
-                                x=0,
-                                y=1.0
-                            ),
-                            margin=dict(l=40, r=0, t=40, b=30)
-                        )
-                    ),
-                    style={'height': 300},
-                    id='my-graph2'
-                )], style={'width': '48%', 'display': 'inline-block'}),
-            ]),
         ]),
 
     html.Div([
@@ -497,6 +327,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
         # Pie Charts
         html.Div([dcc.Graph(figure={'data': totals_data})])
     ]),
+
 
     html.Div([
         html.H3(
@@ -546,6 +377,169 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
         ])
     ]),
 ])
+
+@app.callback(Output('tabs-content-example', 'children'),
+              [Input('tabs-example', 'value')])
+def render_content(tab):
+    if tab == 'tab-1-example':
+        return html.Div([
+            html.H3('Line Charts'),
+            html.Div([
+                # html.H3(
+                #     children='Graph plots', style={
+                #         'textAlign': 'center',
+                #     }
+                # ),
+                html.Div([
+                    dcc.Graph(
+                        figure=dict(
+                            data=[
+                                dict(
+                                    x=Day,
+                                    y=Cars,
+                                    name='Cars',
+                                    marker=dict(
+                                        color='rgb(55, 83, 109)'
+                                    )
+                                ),
+                                dict(
+                                    x=Day,
+                                    y=Pedestrians,
+                                    name='Pedestrians',
+                                    marker=dict(
+                                        color='rgb(55, 83, 109)'
+                                    )
+                                ),
+                                dict(
+                                    x=Day,
+                                    y=Vans,
+                                    name='Vans',
+                                    marker=dict(
+                                        color='rgb(55, 83, 109)'
+                                    )
+                                )
+                            ],
+                            layout=dict(
+                                title='Average activity during Week - Measured per Day',
+                                xaxis_title='x axis',
+                                yaxis_title='Y axis',
+                                showlegend=True,
+                                legend=dict(
+                                    x=0,
+                                    y=1.0
+                                ),
+                                margin=dict(l=40, r=0, t=40, b=30)
+                            )
+                        ),
+                        style={'height': 300},
+                        id='my-graph1'
+                    )], style={'width': '48%', 'display': 'inline-block'}),
+
+                # Time Plot
+                html.Div([
+                    dcc.Graph(
+                        figure=dict(
+                            data=[
+                                dict(
+                                    x=Time,
+                                    y=Total_hourly,
+                                    name='Total',
+                                    marker=dict(
+                                        color='rgb(55, 83, 109)'
+                                    )
+                                ),
+                                dict(
+                                    x=Time,
+                                    y=Cars_hourly,
+                                    name='Cars',
+                                    marker=dict(
+                                        color='rgb(55, 83, 109)'
+                                    )
+                                ),
+                                dict(
+                                    x=Time,
+                                    y=Pedestrians_hourly,
+                                    name='Pedestrians',
+                                    marker=dict(
+                                        color='rgb(55, 83, 109)'
+                                    )
+                                ),
+                                dict(
+                                    x=Time,
+                                    y=Uncertain_hourly,
+                                    name='Uncertain',
+                                    marker=dict(
+                                        color='rgb(55, 83, 109)'
+                                    )
+                                )
+                            ],
+                            layout=dict(
+                                title='Average activity during day - Measured Per Hour',
+                                showlegend=True,
+                                legend=dict(
+                                    x=0,
+                                    y=1.0
+                                ),
+                                margin=dict(l=40, r=0, t=40, b=30)
+                            )
+                        ),
+                        style={'height': 300},
+                        id='my-graph2'
+                    )], style={'width': '48%', 'display': 'inline-block'}),
+            ]),
+        ])
+    elif tab == 'tab-2-example':
+        return html.Div([
+            html.H3('Bar Chart Plots'),
+            html.Div([
+                html.Div([
+                    html.Div([
+                        dcc.Graph(
+                            id='Testing week plot',
+                            figure={
+                                'data': [
+                                    {'x': Day, 'y': Cars, 'type': 'bar', 'name': 'Cars'},
+                                    {'x': Day, 'y': Pedestrians, 'type': 'bar', 'name': u'Pedestrians'},
+                                    {'x': Day, 'y': Vans, 'type': 'bar', 'name': u'Vans'},
+
+                                ],
+                                'layout': {
+                                    'title': 'Average activity during Week - Measured per Day',
+                                    'plot_bgcolor': colors['background'],
+                                    'paper_bgcolor': colors['background'],
+                                    'xaxis': {'title': 'Day - 24 hour periods'},
+                                    'yaxis': {'title': 'Number of vehicles'}
+
+                                }
+                            }
+                        )
+                    ], style={'width': '48%', 'display': 'inline-block'}),
+
+                    html.Div([
+                        dcc.Graph(
+                            id='Testing time plot',
+                            figure={
+                                'data': [
+                                    {'x': Time, 'y': Total_hourly, 'type': 'bar', 'name': 'Cars'},
+                                    {'x': Time, 'y': Cars_hourly, 'type': 'bar', 'name': 'Cars'},
+                                    {'x': Time, 'y': Pedestrians_hourly, 'type': 'bar', 'name': u'Pedestrians'},
+                                    {'x': Time, 'y': Uncertain_hourly, 'type': 'bar', 'name': u'Uncertain'},
+
+                                ],
+                                'layout': {
+                                    'title': 'Average activity during Day - Measured per Hour',
+                                    'plot_bgcolor': colors['background'],
+                                    'paper_bgcolor': colors['background'],
+                                    'xaxis': {'title': 'Time - Hours (24 hours)'},
+                                    'yaxis': {'title': 'Number of vehicles'}
+                                }
+                            }
+                        )
+                    ], style={'width': '48%', 'display': 'inline-block'}),
+                ])
+            ]),
+        ])
+
 
 if __name__ == '__main__':
     app.run_server(debug=True)
