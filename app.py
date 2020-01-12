@@ -7,9 +7,7 @@ from dash.dependencies import Input, Output
 from PIL import Image
 import plotly.graph_objects as go
 from tqdm import tqdm
-
-
-#from iot_functions import time_windowing
+from datetime import datetime
 
 # ---------------------------------------------------------------------
 # -- Initialisation --
@@ -150,74 +148,104 @@ Detection_number = Detection_df['Number']
 # -- Text --
 markdown_text = ''' 
 ## Introduction
-This project is for internet of things.
-This web app is powered coded in Dash: "A productive Python framework for building web applications".
-'''
-markdown_text2 = '''
-# How to use
-The app is easy to use, simply view either the experimental data or the meta analysis of the equipment.
+This is a web app representing data from a Study into road usage in side streets in London, submitted for Sensing
+and Internet of Things (SIoT) coursework.\n
+All data is a available on the project's [Github Repository](https://github.com/AlfieT37/road-usage). This contains
+processed data, source code and Remote Sensor module code. Photos are hosted privately to maintain data privacy. \n
+##### Objectives
+* Monitor and detect movement at street level
+* Analyse data to identify the type of object detected
+* Identify trends in road usage by **time**, **day** and **weather conditions**
+* Present visualisation of data online - via a web app \n
+##### Information about the study
+This study spans over two weeks of data collection, with 35,000 samples. Future development of the study would
+generate data that is useful for road planning and smart cities, who could redirect traffic based upon real data.\n
+*For more information, contact me* - [Via email](mailto:alfiethompson37@gmail.com) *(alfiethompson37@gmail.com)*\n
+##### Web app
+This web app was coded in python using the in Dash: "A productive Python framework for building web applications". 
+The web app is hosted for free via Heroku and, through it linkage to Github, is able to automatically rebuild when 
+update data is generated. This would occur on a daily basis as the study continued. \n
+*For more information:*
+* Visit the Dash [documentation](https://dash.plot.ly/)
+* Visit Heroku's [Website](https://www.heroku.com/)
+* Visit Openweather's [Website](https://openweathermap.org/)
+
 '''
 
 data_overview = ''' 
-**Average Number of Vehicles detected per day** - 1500\n
-**Total number of Vehicles** - 15,000\n
+**Average Number of Vehicles detected per day** - 709\n
+**Total number of road uses** - 7804\n
 \n
 **Most common weather** - Cloudy\n
-**Average temperature** - 8 *degrees Centigrade*\n
+**Average temperature** - 299 kelvin\n
 \n
-**
+
 '''
 
 weather_introduction_markdown = '''
-This is weather
+A key objective of the study was to understand how road usage is effected by weather effects. Below are two plots
+that show the key trends found in the data.  
 '''
 
 totals_introduction_markdown = '''
-This is total plots
+Using the data gathered in this study, the trends of vehicle usage can be analysed.\n
+This data is useful for understanding how the road is used **per hour** and **per day of the week**.\n
+*The two plots can be viewed in either line or bar chart forms - __Simply click the tab to view__ *
+
 '''
 
 Pie_chart_introductions = '''
-Intro to pie Charts
+An important piece of information for this study is what proportion of correct detections are **Unidentified** or
+**Vehicles**. \n
+Of these, there is a distribution of total vehicles that have been correctly identified. 
 '''
+
+Meta_analysis = '''
+The reliability of the Remote Sensor Module Can be evaluated here.\n
+**"Uncertain" identifications** occur when the object detected from the image difference algorithm is larger than the
+maximum size of the vehicles. These can occur when the object that has changed is not a real vehicle. A reduction
+this number will come with better image analysis. \n
+**Detection Errors** Occur when a large number of objects in the scene change. This can occur when light levels change,
+when a few cars parked on the street change or any number of other reasons. When a large number of objects is detected,
+the results should be marked as in valid.
+'''
+
+now = datetime.now()
+last_updated_markdown = '''
+*Last updated: %s*
+''' %now
+
+title_markdown = '''
+**DE4 - Sensing and Internet of Things Coursework**\n
+by Alfie Thompson
+'''
+
 
 # ---------------------------------------------------------------------
 # Layout
 
 app.layout = html.Div(style={'backgroundColor': colors['background']}, children=[
-
     # Titles
     html.Div([
         html.H1(
-            children='Road Usage',
+            children='- Road Usage Detection -',
             style={
                 'textAlign': 'center',
                 'color': 'white'
             }
         ),
-
-        # Subtitles
         html.Div([
-            html.Div(children='Sensing and Internet of Things Coursework', style={
-                'textAlign': 'center',
-                'color': 'white'
-            }),
+            dcc.Markdown(style={'columnCount': 1}, children=title_markdown),
+        ], style={'textAlign': 'center', 'color': 'white'})
 
-
-        html.Div(children='by Alfie Thompson', style={
-            'textAlign': 'center',
-            'color': 'white'}),
-        ]),
     ], style={'backgroundColor': '#053B41'}),
+
+    dcc.Markdown(style={'columnCount': 1}, children=last_updated_markdown),
 
     # Introduction
     html.Div([
         html.Div([
-            dcc.Markdown(style={'columnCount': 1}, children=markdown_text)],
-            style={'width': '48%', 'display': 'inline-block'}),
-
-        html.Div([
-            dcc.Markdown(style={'columnCount': 1}, children=markdown_text2)],
-            style={'width': '48%', 'display': 'inline-block'}),
+            dcc.Markdown(style={'columnCount': 2}, children=markdown_text)])
     ]),
 
     html.Div([
@@ -311,8 +339,8 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
         dcc.Markdown(style={'columnCount': 1}, children=totals_introduction_markdown),
         # -- Tabs -- (Controlling view-able data)
         dcc.Tabs(id="tabs-example", value='tab-1-example', children=[
-            dcc.Tab(label='Tab One', value='tab-1-example'),
-            dcc.Tab(label='Tab Two', value='tab-2-example'),
+            dcc.Tab(label='Line Chart Plotting', value='tab-1-example'),
+            dcc.Tab(label='Bar Chart Plotting', value='tab-2-example'),
         ]),
         html.Div(id='tabs-content-example'),
 
@@ -335,9 +363,9 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
     # -- Uncertainty Plots --
     html.Div([
         html.H3(
-            children='Uncertainty', style={
+            children='-- Study Meta Data --', style={
                 'textAlign': 'center'}),
-        dcc.Markdown(style={'columnCount': 1}, children=Pie_chart_introductions),
+        dcc.Markdown(style={'columnCount': 1}, children=Meta_analysis),
         #
         html.Div([
             html.Div([
@@ -381,8 +409,6 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
         ])
     ]),
 ])
-
-
 
 
 # ---------------------------------------------------------

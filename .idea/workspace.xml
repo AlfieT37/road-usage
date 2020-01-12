@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="735b1a82-5415-492a-af4f-a262a0c385a0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_totals.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data_totals.csv" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,8 +30,8 @@
             <file pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/app.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="425">
-                    <caret line="49" column="53" lean-forward="true" selection-start-line="49" selection-start-column="53" selection-end-line="49" selection-end-column="53" />
+                  <state relative-caret-position="731">
+                    <caret line="186" column="44" selection-start-line="186" selection-start-column="44" selection-end-line="186" selection-end-column="44" />
                     <folding>
                       <element signature="e#24#35#0" expanded="true" />
                     </folding>
@@ -81,6 +80,7 @@
       <find>colo</find>
       <find>&quot;</find>
       <find>generate_pie_charts</find>
+      <find>mark</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -462,8 +462,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="49" column="53" lean-forward="true" selection-start-line="49" selection-start-column="53" selection-end-line="49" selection-end-column="53" />
+        <state relative-caret-position="731">
+          <caret line="186" column="44" selection-start-line="186" selection-start-column="44" selection-end-line="186" selection-end-column="44" />
           <folding>
             <element signature="e#24#35#0" expanded="true" />
           </folding>
