@@ -27,6 +27,9 @@ update data is generated. This would occur on a daily basis as the study continu
 This Github repository is made up of a mix of data, python files and prerequisites for the web app. Provided below is
 a guide to these files.
 
+It is necessary to install CV2 ([Guide](https://www.pyimagesearch.com/opencv-tutorials-resources-guides/)) and Skimage ([Guide](https://scikit-image.org/docs/dev/install.html)) in order to run iot functions.
+
+
 #### Guide
 * **Important**
   * **Car Counter** is used by the Remote Sensor Module to generate the data
