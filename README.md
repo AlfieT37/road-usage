@@ -27,13 +27,12 @@ new data is generated. This would occur on a daily basis as the study continued.
 This Github repository is made up of a mix of data, python files and prerequisites for the web app. Provided below is
 a guide to these files.
 
-It is necessary to install CV2 ([Guide](https://www.pyimagesearch.com/opencv-tutorials-resources-guides/)) and Skimage ([Guide](https://scikit-image.org/docs/dev/install.html)) in order to run iot functions.
-
+It is necessary to install CV2 ([Guide](https://www.pyimagesearch.com/opencv-tutorials-resources-guides/)) and Skimage ([Guide](https://scikit-image.org/docs/dev/install.html)) in order to run iot functions. In addition, images need to be downloaded and paths  for image files updated to run analysis. *A full analysis of all datapoints and images takes approximately 2 hours*.
 
 #### Guide
 * **Important**
   * **Car Counter** is used by the Remote Sensor Module to generate the data
-  * **App** file containing web app
+  * **App** file containing web app code
   * **iot functions** primary file for data processing
 
 * **Initialisation**
