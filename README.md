@@ -15,8 +15,8 @@ generate data that is useful for road planning and smart cities, who could redir
 
 ##### Web app
 This web app was coded in python using the in Dash: "A productive Python framework for building web applications". 
-The web app is hosted for free via Heroku and, through it linkage to Github, is able to automatically rebuild when 
-update data is generated. This would occur on a daily basis as the study continued.
+The web app is hosted for free via Heroku and, through its linkage to Github, is able to automatically rebuild when 
+new data is generated. This would occur on a daily basis as the study continued.
 
 *For more information:*
 * Visit the Dash [documentation](https://dash.plot.ly/)
