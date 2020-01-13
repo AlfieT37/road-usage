@@ -42,7 +42,7 @@ def generate_pie_charts(dataframe):
     x1 = 0
     x2 = 0.40
 
-    a=0
+    a = 0
     for label, value in zip(labels, values):
         if a == 0:
             my_title = 'Proportion of total vehicles'
@@ -151,39 +151,39 @@ markdown_text = '''
 This is a web app representing data from a Study into road usage in side streets in London, submitted for Sensing
 and Internet of Things (SIoT) coursework.\n
 All data is a available on the project's [Github Repository](https://github.com/AlfieT37/road-usage). This contains
-processed data, source code and Remote Sensor module code. Photos are hosted privately to maintain data privacy. \n
+processed data, source code and Remote Sensor module code. Photos are hosted privately to maintain data privacy.\n
+GitHub also contains information on how to run files.\n
 ##### Objectives
 * Monitor and detect movement at street level
 * Analyse data to identify the type of object detected
 * Identify trends in road usage by **time**, **day** and **weather conditions**
-* Present visualisation of data online - via a web app \n
-##### Information about the study
+* Present visualisation of data online - via a web app
+
 This study spans over two weeks of data collection, with 16,600 samples. Future development of the study would
 generate data that is useful for road planning and smart cities, who could redirect traffic based upon real data.\n
 *For more information, contact me* - [Via email](mailto:alfiethompson37@gmail.com) *(alfiethompson37@gmail.com)*\n
 ##### Web app
-This web app was coded in python using the in Dash: "A productive Python framework for building web applications". 
-The web app is hosted for free via Heroku and, through it linkage to Github, is able to automatically rebuild when 
-update data is generated. This would occur on a daily basis as the study continued. \n
+This web app was coded in python using the in Dash: "A productive Python framework for building web applications". \n
+The web app is hosted for free via Heroku and, through its linkage to Github, is able to automatically rebuild when 
+new data is generated. This would occur on a daily basis as the study continued. \n
 *For more information:*
 * Visit the Dash [documentation](https://dash.plot.ly/)
 * Visit Heroku's [Website](https://www.heroku.com/)
 * Visit Openweather's [Website](https://openweathermap.org/)
-
 '''
 
 data_overview = ''' 
-**Average Number of Vehicles detected per day** - 709\n
-**Total number of road uses** - 7804\n
-\n
+**Average Number of Vehicles detected per day** - 1841\n
+**Total number of road uses** - 16681\n
 **Most common weather** - Cloudy\n
-**Average temperature** - 299 kelvin\n
-\n
+**Average temperature** - 297 kelvin\n
+**Most active time of day** - 4-5 Pm\n
 
 '''
 
 weather_introduction_markdown = '''
-A key objective of the study was to understand how road usage is effected by weather effects. Below are two plots
+A key objective of the study was to understand how road usage is effected by weather effects.\n
+Below are two plots
 that show the key trends found in the data.  
 '''
 
@@ -291,9 +291,9 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
                             dict(
                                 x=Temperature,
                                 y=Total_temp,
-                                name='Cars',
+                                name='Total',
                                 marker=dict(
-                                    color='rgb(55, 83, 109)'
+                                    color='#1C93A8'
                                 )
                             ),
                             dict(
@@ -301,7 +301,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
                                 y=Cars_temp,
                                 name='Cars',
                                 marker=dict(
-                                    color='rgb(55, 83, 109)'
+                                    color='rgb(6, 32, 63)'
                                 )
                             ),
                             dict(
@@ -309,7 +309,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
                                 y=Pedestrians_temp,
                                 name='Pedestrians',
                                 marker=dict(
-                                    color='rgb(55, 83, 109)'
+                                    color='rgb(5, 59, 65)'
                                 )
                             ),
                             dict(
@@ -317,7 +317,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
                                 y=Uncertain_temp,
                                 name='Uncertainty',
                                 marker=dict(
-                                    color='rgb(55, 83, 109)'
+                                    color='rgb(33, 117, 84)'
                                 )
                             )
                         ],
@@ -369,7 +369,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
     html.Div([
         html.H2(
             children='-- Study Meta Data --', style={
-                'textAlign': 'left'}),
+                'textAlign': 'center'}),
         dcc.Markdown(style={'columnCount': 1}, children=Meta_analysis),
         #
         html.Div([
@@ -435,7 +435,7 @@ def render_content(tab):
                                     y=Cars,
                                     name='Cars',
                                     marker=dict(
-                                        color='rgb(55, 83, 109)'
+                                        color='#1C93A8'
                                     )
                                 ),
                                 dict(
@@ -443,7 +443,7 @@ def render_content(tab):
                                     y=Pedestrians,
                                     name='Pedestrians',
                                     marker=dict(
-                                        color='rgb(55, 83, 109)'
+                                        color='rgb(5, 59, 65)'
                                     )
                                 ),
                                 dict(
@@ -451,7 +451,7 @@ def render_content(tab):
                                     y=Vans,
                                     name='Vans',
                                     marker=dict(
-                                        color='rgb(55, 83, 109)'
+                                        color='rgb(33, 117, 84)'
                                     )
                                 )
                             ],
@@ -481,7 +481,7 @@ def render_content(tab):
                                     y=Total_hourly,
                                     name='Total',
                                     marker=dict(
-                                        color='rgb(55, 83, 109)'
+                                        color='#1C93A8'
                                     )
                                 ),
                                 dict(
@@ -489,7 +489,7 @@ def render_content(tab):
                                     y=Cars_hourly,
                                     name='Cars',
                                     marker=dict(
-                                        color='rgb(55, 83, 109)'
+                                        color='rgb(6, 32, 63)'
                                     )
                                 ),
                                 dict(
@@ -497,7 +497,7 @@ def render_content(tab):
                                     y=Pedestrians_hourly,
                                     name='Pedestrians',
                                     marker=dict(
-                                        color='rgb(55, 83, 109)'
+                                        color='rgb(5, 59, 65)'
                                     )
                                 ),
                                 dict(
@@ -505,7 +505,7 @@ def render_content(tab):
                                     y=Uncertain_hourly,
                                     name='Uncertain',
                                     marker=dict(
-                                        color='rgb(55, 83, 109)'
+                                        color='rgb(33, 117, 84)'
                                     )
                                 )
                             ],

@@ -30,8 +30,8 @@
             <file pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/app.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="374">
-                    <caret line="241" lean-forward="true" selection-start-line="241" selection-end-line="241" />
+                  <state relative-caret-position="731">
+                    <caret line="390" column="25" lean-forward="true" selection-start-line="390" selection-start-column="25" selection-end-line="390" selection-end-column="25" />
                     <folding>
                       <element signature="e#24#35#0" expanded="true" />
                     </folding>
@@ -97,6 +97,7 @@
       <find>cent</find>
       <find>h2</find>
       <find>h3</find>
+      <find>data_weath</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -487,8 +488,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="241" lean-forward="true" selection-start-line="241" selection-end-line="241" />
+        <state relative-caret-position="731">
+          <caret line="390" column="25" lean-forward="true" selection-start-line="390" selection-start-column="25" selection-end-line="390" selection-end-column="25" />
           <folding>
             <element signature="e#24#35#0" expanded="true" />
           </folding>
