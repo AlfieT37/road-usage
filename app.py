@@ -238,7 +238,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
             dcc.Markdown(style={'columnCount': 1}, children=title_markdown),
         ], style={'textAlign': 'center', 'color': 'white'})
 
-    ], style={'backgroundColor': '#053B41'}),
+    ], style={'backgroundColor': 'rgb(33, 117, 84)'}),
 
     dcc.Markdown(style={'columnCount': 1}, children=last_updated_markdown),
 
